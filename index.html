@@ -26,19 +26,11 @@ body{
   min-height:100vh;
   padding:60px 18px 100px;
   display:none;
-  animation:pageFade .7s ease;
 }
 .page.active{display:block}
 
-@keyframes pageFade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1}
-}
-
 /* ===== COVER ===== */
-.cover{
-  text-align:center;
-}
+.cover{text-align:center}
 .cover img{
   width:100%;
   max-width:320px;
@@ -50,22 +42,12 @@ body{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-10px)}
 }
-.cover h1{
-  font-size:30px;
-  margin:25px 0 10px;
-}
+.cover h1{font-size:30px;margin:25px 0 10px}
 .cover p{opacity:.8}
 
 /* ===== EVENT ===== */
-.event h2{
-  font-size:24px;
-  margin-top:10px;
-}
-.event p{
-  font-size:15px;
-  line-height:1.6;
-  opacity:.85;
-}
+.event h2{font-size:24px}
+.event p{font-size:15px;line-height:1.6;opacity:.85}
 
 /* ===== GALLERY ===== */
 .gallery{
@@ -98,7 +80,6 @@ body{
   gap:14px;
   padding:0 18px;
 }
-
 button{
   flex:1;
   max-width:160px;
@@ -108,305 +89,89 @@ button{
   border-radius:28px;
   font-size:15px;
   box-shadow:0 10px 25px rgba(0,0,0,.25);
-  transition:.3s;
 }
-button:hover{
-  transform:translateY(-3px);
-}
+button:hover{transform:translateY(-3px)}
 
-/* ===== END ===== */
-.end{
-  text-align:center;
-}
-.end h2{font-size:26px}
+.end{text-align:center}
 </style>
 </head>
 
 <body>
 
 <!-- ===== COVER ===== -->
-<div class="page active cover" id="page0">
+<div class="page active cover">
   <img src="cover.jpg">
   <h1>Recap Học Kỳ I</h1>
-  <p>Bảo tàng triễn lãm học tập HK1 7A1 </p>
-
+  <p>Bảo tàng triển lãm học tập HK1 7A1</p>
   <div class="nav">
     <button onclick="go(1)">Bắt đầu</button>
   </div>
 </div>
 
-<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
+<!-- ===== EVENT 1 ===== -->
+<div class="page event">
   <h2>Ngày định hướng</h2>
-  <p>Ngày định hướng là một trong những ngày đầu tiên và đáng nhớ nhất, khi mọi thứ còn rất mới mẻ nhưng cũng đầy háo hức. Chúng tôi được làm quen với thầy cô, bạn bè, môi trường học tập và những quy định quan trọng của nhà trường [Ngày 5/9].</p>
-
+  <p>Ngày định hướng là một trong những ngày đầu tiên và đáng nhớ nhất... [5/9]</p>
   <div class="gallery">
-    <img src="DSC03421.jpg"> 
+    <img src="DSC03421.jpg">
     <img src="3W3A1485.JPG">
     <img src="3W3A1348 (1).JPG">
     <img src="DSC8400 (1).JPG">
-    <img src="">
-    <img src="">
   </div>
-
   <div class="nav">
     <button onclick="go(0)">Trước</button>
     <button onclick="go(2)">Sau</button>
   </div>
 </div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>Khai giảng</h2>
-  <p>Ngày khai giảng được tổ chức tại sân trường với các nghi thức cơ bản, chính thức mở đầu năm học mới.[Ngày 5/9]</p>
 
+<!-- ===== EVENT 2 ===== -->
+<div class="page event">
+  <h2>Khai giảng</h2>
+  <p>Ngày khai giảng được tổ chức tại sân trường... [5/9]</p>
   <div class="gallery">
-    <img src="IMG_0405.jpg"> 
+    <img src="IMG_0405.jpg">
     <img src="3W3A0222.jpg">
     <img src="3W3A0352.jpg">
     <img src="3W3A0225 (1).JPG">
-    <img src="3W3A0347.jpg">
-    <img src="">
   </div>
-
   <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>Công tác xã hội HK1</h2>
-  <p>Công tác xã hội là sự kiện giúp chúng em được tham gia trò chuyện cùng mọi người, đồng thời hỗ trợ và giúp đỡ những người xung quanh trong khả năng của mình.[25/10]</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>Văn Nghệ HK1</h2>
-  <p>Văn nghệ giúp em rèn luyện sự tự tin, khả năng phối hợp và tinh thần làm việc nhóm.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
-  </div>
-</div>
-  <!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>a</h2>
-  <p>a.</p>
-
-  <div class="gallery">
-    <img src=""> 
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">Trước</button>
-    <button onclick="go(2)">Sau</button>
+    <button onclick="go(1)">Trước</button>
+    <button onclick="go(3)">Sau</button>
   </div>
 </div>
 
-<!-- ===== TRANG KẾT ===== -->
-<div class="page end" id="pageEnd">
+<!-- ===== END ===== -->
+<div class="page end">
   <h2>Cảm ơn vì đã xem</h2>
   <p>Một học kỳ khép lại</p>
-
   <div class="nav">
     <button onclick="go(0)">Xem lại</button>
   </div>
 </div>
 
 <script>
+const pages=document.querySelectorAll(".page");
+
 function go(n){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  if(n==="end"){
-    document.getElementById("pageEnd").classList.add("active");
-  }else{
-    document.getElementById("page"+n).classList.add("active");
+  pages.forEach(p=>p.classList.remove("active"));
+  if(pages[n]){
+    pages[n].classList.add("active");
+    window.scrollTo(0,0);
+    observeImages();
   }
-  window.scrollTo(0,0);
-  observeImages();
 }
 
 function observeImages(){
   const imgs=document.querySelectorAll(".gallery img");
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add("show");
-      }
+      if(e.isIntersecting) e.target.classList.add("show");
     });
   },{threshold:.3});
-
   imgs.forEach(img=>io.observe(img));
 }
 
-<script>
-  const pages = document.querySelectorAll(".page");
-
-  function go(index) {
-    pages.forEach(p => p.style.display = "none");
-    if (pages[index]) {
-      pages[index].style.display = "block";
-      window.scrollTo(0, 0);
-    }
-  }
-
-  function observeImages() {
-    const images = document.querySelectorAll(".gallery img");
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.2 });
-
-    images.forEach(img => observer.observe(img));
-  }
-
-  go(0);
-  observeImages();
+observeImages();
 </script>
 
 </body>
