@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Recap HK1</title>
+
+<style>
+body{
+  margin:0;
+  font-family: "Segoe UI", sans-serif;
+  background:#f2f2f2;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+.page{
+  display:none;
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+.page.active{display:block;}
+h2{text-align:center;}
+p{line-height:1.6;}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;
+  margin-top:20px;
+}
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.nav{
+  text-align:center;
+  margin-top:30px;
+}
+button{
+  padding:10px 22px;
+  border:none;
+  border-radius:30px;
+  background:#222;
+  color:white;
+  margin:5px;
+  cursor:pointer;
+}
+button:hover{background:#555;}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- ================= EVENT TEMPLATE ================= -->
+
+<div id="page1" class="page active">
+<h2>Event 1 – 4 Chân Tình Nguyện</h2>
+
+<!-- ✍️ NỘI DUNG BẠN VIẾT Ở ĐÂY -->
+<p>
+Viết nội dung event ở đây.  
+Bạn có thể viết dài bao nhiêu cũng được.
+</p>
+
+<!-- 🖼️ ẢNH EVENT 1 (TỐI ĐA ~15 ẢNH) -->
+<div class="gallery">
+<img src="e1_1.jpg">
+<img src="e1_2.jpg">
+<img src="e1_3.jpg">
+<img src="e1_4.jpg">
+<img src="e1_5.jpg">
+<!-- thêm tiếp nếu muốn -->
+</div>
+
+<div class="nav">
+<button onclick="goTo(2)">Tiếp theo</button>
+</div>
+</div>
+
+<!-- COPY KHỐI TRÊN, CHỈ ĐỔI SỐ EVENT + TÊN -->
+
+<div id="page2" class="page">
+<h2>Event 2 – Công Tác Xã Hội</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery">
+<img src="e2_1.jpg">
+<img src="e2_2.jpg">
+<img src="e2_3.jpg">
+</div>
+<div class="nav">
+<button onclick="goTo(1)">Quay lại</button>
+<button onclick="goTo(3)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page3" class="page">
+<h2>Event 3 – Hội Thao</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery">
+<img src="e3_1.jpg">
+<img src="e3_2.jpg">
+</div>
+<div class="nav">
+<button onclick="goTo(2)">Quay lại</button>
+<button onclick="goTo(4)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page4" class="page">
+<h2>Event 4 – Họp Phụ Huynh</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(3)">Quay lại</button>
+<button onclick="goTo(5)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page5" class="page">
+<h2>Event 5 – Khai Giảng</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(4)">Quay lại</button>
+<button onclick="goTo(6)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page6" class="page">
+<h2>Event 6 – Ngày Định Hướng</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(5)">Quay lại</button>
+<button onclick="goTo(7)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page7" class="page">
+<h2>Event 7 – Ngày Nhà Giáo</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(6)">Quay lại</button>
+<button onclick="goTo(8)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page8" class="page">
+<h2>Event 8 – Tập Huấn</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(7)">Quay lại</button>
+<button onclick="goTo(9)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page9" class="page">
+<h2>Event 9 – Văn Nghệ</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(8)">Quay lại</button>
+<button onclick="goTo(10)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page10" class="page">
+<h2>Event 10 – Học Tập Trải Nghiệm</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(9)">Quay lại</button>
+<button onclick="goTo(11)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page11" class="page">
+<h2>Event 11 – Liên Hoan Sinh Nhật</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(10)">Quay lại</button>
+<button onclick="goTo(12)">Tiếp theo</button>
+</div>
+</div>
+
+<div id="page12" class="page">
+<h2>Event 12 – Tiễn Quỳnh Trân</h2>
+<p>Viết nội dung event ở đây.</p>
+<div class="gallery"></div>
+<div class="nav">
+<button onclick="goTo(11)">Quay lại</button>
+</div>
+</div>
+
+</div>
+
+<script>
+function goTo(n){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page'+n).classList.add('active');
+window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
