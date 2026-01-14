@@ -2,190 +2,226 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Blue Journey</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Recap HK1</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-  color: #1e3a8a;
+:root{
+  --blue:#cfe7ff;
+  --blue-dark:#6fa8dc;
+  --text:#024;
 }
 
-/* INTRO */
-#intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#eaf4ff,#ffffff);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-#intro h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+/* ===== PAGE ===== */
+.page{
+  min-height:100vh;
+  padding:60px 20px 100px;
+  display:none;
+  animation:slideUp .8s ease;
+}
+.page.active{display:block}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
 }
 
-.start-btn {
-  padding: 15px 45px;
-  border-radius: 50px;
-  border: none;
-  font-size: 1.2em;
-  background: #7dd3fc;
-  color: #0c4a6e;
-  cursor: pointer;
-  transition: 0.4s;
+/* ===== COVER ===== */
+.cover{
+  text-align:center;
+}
+.cover img{
+  width:100%;
+  max-width:320px;
+  border-radius:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+.cover h1{
+  font-size:32px;
+  margin:25px 0 10px;
+}
+.cover p{opacity:.8}
+
+/* ===== EVENT ===== */
+.event h2{
+  font-size:26px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.event h2 img{
+  width:32px;
+  height:32px;
+}
+.event p{
+  font-size:15px;
+  line-height:1.6;
+  margin-top:10px;
 }
 
-.start-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #7dd3fc;
+/* ===== GALLERY ===== */
+.gallery{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.gallery img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+  animation:fadeImg .8s ease;
+}
+@keyframes fadeImg{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1}
+}
+.hidden{display:none}
+
+/* ===== NAV ===== */
+.nav{
+  position:fixed;
+  bottom:20px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:0 15px;
 }
 
-/* EVENT */
-.event {
-  display: none;
-  padding: 80px 40px;
-  animation: fade 0.6s ease;
+button{
+  flex:1;
+  max-width:140px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  border:none;
+  padding:12px;
+  border-radius:28px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  transition:.3s;
+}
+button img{
+  width:20px;
+}
+button:hover{
+  transform:translateY(-3px);
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ===== END ===== */
+.end{
+  text-align:center;
 }
-
-.event h2 {
-  text-align: center;
-  font-size: 2em;
-}
-
-.event p {
-  text-align: center;
-  max-width: 700px;
-  margin: 20px auto;
-}
-
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 18px;
-  transition: 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* NAV */
-.nav {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.nav button {
-  padding: 10px 30px;
-  border-radius: 40px;
-  border: none;
-  background: #bae6fd;
-  cursor: pointer;
-  font-size: 1em;
-  transition: 0.3s;
-}
-
-.nav button:hover {
-  background: #38bdf8;
-  color: white;
-}
-
-/* END */
-#end {
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+.end h2{font-size:28px}
 </style>
 </head>
 
 <body>
 
-<!-- NHẠC NỀN -->
-<audio id="music" loop>
-  <!-- ĐỔI FILE NHẠC CỦA BẠN Ở ĐÂY -->
-  <source src="music.mp3" type="audio/mp3">
-</audio>
+<!-- ===== NHẠC NỀN ===== -->
+<audio id="bgm" src="music.mp3" loop></audio>
 
-<!-- INTRO -->
-<div id="intro">
-  <h1><!-- RECAP HK1 --></h1>
-  <p><!-- Đây là cuốn album cho HK1 của lớp 7A1 --></p>
-  <button class="start-btn" onclick="start()">Bắt đầu</button>
-</div>
-
-<!-- EVENT MẪU (COPY KHỐI NÀY 12 LẦN) -->
-<div class="event" id="event1">
-  <h2><!-- KHAI GIẢNG --></h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- THÊM ẢNH Ở ĐÂY (TỐI ĐA ~15 ẢNH) -->
-    <img src="">IMG_0405.jpg
-    <img src="">
-  </div>
+<!-- ===== COVER ===== -->
+<div class="page active cover" id="page0">
+  <img src="cover.jpg">
+  <h1>Recap Học Kỳ I</h1>
+  <p>Một hành trình thanh xuân</p>
 
   <div class="nav">
-    <button onclick="next(2)">Tiếp theo</button>
+    <button onclick="startMusic();go(1)">
+      <img src="icon-start.png"> Bắt đầu
+    </button>
   </div>
 </div>
-<div class="event" id="event1">
-  <h2><!-- TÊN EVENT --></h2>
+
+<!-- ===== EVENT MẪU ===== -->
+<div class="page event" id="page1">
+  <h2>
+    <img src="icon-event1.png">
+    <!-- TÊN EVENT -->
+  </h2>
   <p><!-- MÔ TẢ EVENT --></p>
 
   <div class="gallery">
-    <!-- THÊM ẢNH Ở ĐÂY (TỐI ĐA ~15 ẢNH) -->
+    <!-- 4 ảnh đầu -->
     <img src="">
     <img src="">
+    <img src="">
+    <img src="">
+
+    <!-- ảnh thêm -->
+    <img src="" class="hidden">
+    <img src="" class="hidden">
+    <img src="" class="hidden">
+    <img src="" class="hidden">
+    <img src="" class="hidden">
   </div>
 
   <div class="nav">
-    <button onclick="next(2)">Tiếp theo</button>
+    <button onclick="go(0)">
+      <img src="icon-back.png"> Trước
+    </button>
+
+    <button onclick="more(this)">
+      <img src="icon-more.png"> Xem thêm
+    </button>
+
+    <button onclick="go(2)">
+      <img src="icon-next.png"> Tiếp
+    </button>
   </div>
 </div>
 
-<!-- TRANG KẾT -->
-<div id="end">
-  <div>
-    <h1><!-- TIÊU ĐỀ KẾT --></h1>
-    <p><!-- CÂU TỔNG KẾT --></p>
+<!-- ===== TRANG KẾT ===== -->
+<div class="page end" id="pageEnd">
+  <h2>Cảm ơn vì đã xem</h2>
+  <p>Thanh xuân khép lại – kỷ niệm còn mãi</p>
+
+  <div class="nav">
+    <button onclick="go(0)">
+      <img src="icon-back.png"> Xem lại
+    </button>
   </div>
 </div>
 
 <script>
-let current = 1;
-
-function start() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("event1").style.display = "block";
-  document.getElementById("music").play();
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  if(n==="end"){
+    document.getElementById('pageEnd').classList.add('active');
+  }else{
+    document.getElementById('page'+n).classList.add('active');
+  }
+  window.scrollTo(0,0);
 }
 
-function next(n) {
-  document.getElementById("event" + current).style.display = "none";
-  if (document.getElementById("event" + n)) {
-    document.getElementById("event" + n).style.display = "block";
-    current = n;
-  } else {
-    document.getElementById("end").style.display = "flex";
-  }
+function more(btn){
+  btn.closest('.page').querySelectorAll('.hidden')
+    .forEach(img=>img.classList.remove('hidden'));
+  btn.style.display="none";
+}
+
+function startMusic(){
+  document.getElementById("bgm").play();
 }
 </script>
 
