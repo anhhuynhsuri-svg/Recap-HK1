@@ -1,0 +1,10 @@
+.gallery img {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease;
+}
+
+.gallery img.show {
+  opacity: 1;
+  transform: translateY(0);
+}
