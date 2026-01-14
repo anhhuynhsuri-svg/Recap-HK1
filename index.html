@@ -380,7 +380,33 @@ function observeImages(){
   imgs.forEach(img=>io.observe(img));
 }
 
-observeImages();
+<script>
+  const pages = document.querySelectorAll(".page");
+
+  function go(index) {
+    pages.forEach(p => p.style.display = "none");
+    if (pages[index]) {
+      pages[index].style.display = "block";
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function observeImages() {
+    const images = document.querySelectorAll(".gallery img");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    images.forEach(img => observer.observe(img));
+  }
+
+  go(0);
+  observeImages();
 </script>
 
 </body>
