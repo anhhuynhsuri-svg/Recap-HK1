@@ -2,14 +2,14 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recap HK1</title>
 
 <style>
 :root{
   --blue:#cfe7ff;
   --blue-dark:#6fa8dc;
-  --text:#024;
+  --text:#023;
 }
 
 *{box-sizing:border-box}
@@ -19,21 +19,20 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:linear-gradient(180deg,#eaf4ff,#ffffff);
   color:var(--text);
-  overflow-x:hidden;
 }
 
 /* ===== PAGE ===== */
 .page{
   min-height:100vh;
-  padding:60px 20px 100px;
+  padding:60px 18px 100px;
   display:none;
-  animation:slideUp .8s ease;
+  animation:pageFade .7s ease;
 }
 .page.active{display:block}
 
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
+@keyframes pageFade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1}
 }
 
 /* ===== COVER ===== */
@@ -44,34 +43,28 @@ body{
   width:100%;
   max-width:320px;
   border-radius:24px;
-  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  box-shadow:0 18px 40px rgba(0,0,0,.2);
   animation:float 4s ease-in-out infinite;
 }
 @keyframes float{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+  50%{transform:translateY(-10px)}
 }
 .cover h1{
-  font-size:32px;
+  font-size:30px;
   margin:25px 0 10px;
 }
 .cover p{opacity:.8}
 
 /* ===== EVENT ===== */
 .event h2{
-  font-size:26px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.event h2 img{
-  width:32px;
-  height:32px;
+  font-size:24px;
+  margin-top:10px;
 }
 .event p{
   font-size:15px;
   line-height:1.6;
-  margin-top:10px;
+  opacity:.85;
 }
 
 /* ===== GALLERY ===== */
@@ -84,14 +77,15 @@ body{
 .gallery img{
   width:100%;
   border-radius:18px;
-  box-shadow:0 10px 20px rgba(0,0,0,.15);
-  animation:fadeImg .8s ease;
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(20px);
+  transition:.6s ease;
 }
-@keyframes fadeImg{
-  from{opacity:0;transform:scale(.95)}
-  to{opacity:1}
+.gallery img.show{
+  opacity:1;
+  transform:none;
 }
-.hidden{display:none}
 
 /* ===== NAV ===== */
 .nav{
@@ -101,27 +95,20 @@ body{
   right:0;
   display:flex;
   justify-content:center;
-  gap:12px;
-  padding:0 15px;
+  gap:14px;
+  padding:0 18px;
 }
 
 button{
   flex:1;
-  max-width:140px;
+  max-width:160px;
   background:linear-gradient(135deg,var(--blue),var(--blue-dark));
   border:none;
-  padding:12px;
+  padding:14px;
   border-radius:28px;
-  font-size:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
+  font-size:15px;
   box-shadow:0 10px 25px rgba(0,0,0,.25);
   transition:.3s;
-}
-button img{
-  width:20px;
 }
 button:hover{
   transform:translateY(-3px);
@@ -131,251 +118,50 @@ button:hover{
 .end{
   text-align:center;
 }
-.end h2{font-size:28px}
+.end h2{font-size:26px}
 </style>
 </head>
 
 <body>
 
-<!-- ===== NHẠC NỀN ===== -->
-<audio id="bgm" src="music.mp3" loop></audio>
-
 <!-- ===== COVER ===== -->
 <div class="page active cover" id="page0">
   <img src="cover.jpg">
   <h1>Recap Học Kỳ I</h1>
-  <p>Một hành trình thanh xuân</p>
+  <p>Chặng hành trình thứ 1 trong năm 2025-2026</p>
 
   <div class="nav">
-    <button onclick="startMusic();go(1)">
-      <img src="icon-start.png"> Bắt đầu
-    </button>
+    <button onclick="go(1)">Bắt đầu</button>
   </div>
 </div>
 
 <!-- ===== EVENT MẪU ===== -->
 <div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
+  <h2>NGÀY ĐỊNH HƯỚNG</h2>
+  <p>Ngày định hướng là một trong những ngày đầu tiên và đáng nhớ nhất, khi mọi thứ còn rất mới mẻ nhưng cũng đầy háo hức. Chúng tôi được làm quen với thầy cô, bạn bè, môi trường học tập và những quy định quan trọng của nhà trường.</p>
 
   <div class="gallery">
-    <!-- 4 ảnh đầu -->
-<img src="IMG_0405.jpg">
-    <img src="3W3A0225 (1).JPG">
-    <img src="3W3A0352.jpg">
-    <img src="DSC03421.jpg">
-
-  <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src="icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
-  </div>
-</div>
-<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- 4 ảnh đầu -->
     <img src="">
     <img src="">
     <img src="">
-
-    <!-- ảnh thêm -->
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
+    <img src="">
+    <img src="">
+    <img src="">
   </div>
 
   <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src="icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
-  </div>
-</div>
-<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- 4 ảnh đầu -->
-    <img src=""> IMG_0405
-    <img src="">
-    <img src="">
-    <img src="">
-
-    <!-- ảnh thêm -->
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src="icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
-  </div>
-</div>
-<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- 4 ảnh đầu -->
-    <img src=""> IMG_0405
-    <img src="">
-    <img src="">
-    <img src="">
-
-    <!-- ảnh thêm -->
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src=<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- 4 ảnh đầu -->
-    <img src=""> IMG_0405
-    <img src="">
-    <img src="">
-    <img src="">
-
-    <!-- ảnh thêm -->
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src="icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
-  </div>
-</div>
-<!-- ===== EVENT MẪU ===== -->
-<div class="page event" id="page1">
-  <h2>
-    <img src="icon-event1.png">
-    <!-- Khai giảng -->
-  </h2>
-  <p><!-- Khai giảng là sự kiện đánh dấu sự bắt đầu của năm học mới. Buổi lễ được tổ chức nhằm chính thức mở đầu cho các hoạt động dạy và học, đồng thời phổ biến những định hướng chung cho năm học. --></p>
-
-  <div class="gallery">
-    <!-- 4 ảnh đầu -->
-    <img src=""> IMG_0405
-    <img src="">
-    <img src="">
-    <img src="">
-
-    <!-- ảnh thêm -->
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-    <img src="" class="hidden">
-  </div>
-
-  <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Trước
-    </button>
-
-    <button onclick="more(this)">
-      <img src="icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
-  </div>
-</div>
-"icon-more.png"> Xem thêm
-    </button>
-
-    <button onclick="go(2)">
-      <img src="icon-next.png"> Tiếp
-    </button>
+    <button onclick="go(0)">Trước</button>
+    <button onclick="go(2)">Sau</button>
   </div>
 </div>
 
 <!-- ===== TRANG KẾT ===== -->
 <div class="page end" id="pageEnd">
   <h2>Cảm ơn vì đã xem</h2>
-  <p>Thanh xuân khép lại – kỷ niệm còn mãi</p>
+  <p>Một học kỳ khép lại</p>
 
   <div class="nav">
-    <button onclick="go(0)">
-      <img src="icon-back.png"> Xem lại
-    </button>
+    <button onclick="go(0)">Xem lại</button>
   </div>
 </div>
 
@@ -383,22 +169,28 @@ button:hover{
 function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   if(n==="end"){
-    document.getElementById('pageEnd').classList.add('active');
+    document.getElementById("pageEnd").classList.add("active");
   }else{
-    document.getElementById('page'+n).classList.add('active');
+    document.getElementById("page"+n).classList.add("active");
   }
   window.scrollTo(0,0);
+  observeImages();
 }
 
-function more(btn){
-  btn.closest('.page').querySelectorAll('.hidden')
-    .forEach(img=>img.classList.remove('hidden'));
-  btn.style.display="none";
+function observeImages(){
+  const imgs=document.querySelectorAll(".gallery img");
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("show");
+      }
+    });
+  },{threshold:.3});
+
+  imgs.forEach(img=>io.observe(img));
 }
 
-function startMusic(){
-  document.getElementById("bgm").play();
-}
+observeImages();
 </script>
 
 </body>
