@@ -367,10 +367,25 @@ function observeImages(){
 }
 
 observeImages();
+ /* ===== PHÓNG TO ẢNH ===== */
+const preview = document.getElementById("imgPreview");
+const previewImg = document.getElementById("previewImg");
+
+document.querySelectorAll(".gallery img").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    previewImg.src = img.src;
+    preview.classList.add("show");
+  });
+});
+
+function closeImg(){
+  preview.classList.remove("show");
+}
 </script>
 <!-- IMAGE PREVIEW -->
 <div id="imgPreview" class="img-preview" onclick="closeImg()">
   <img id="previewImg">
 </div>
+  
 </body>
 </html>
