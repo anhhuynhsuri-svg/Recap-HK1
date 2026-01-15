@@ -38,6 +38,12 @@ body{
   box-shadow:0 18px 40px rgba(0,0,0,.2);
   animation:float 4s ease-in-out infinite;
 }
+.cover .intro-img{
+  max-width:90%;
+  margin:25px auto;
+  border-radius:28px;
+  box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-10px)}
@@ -61,8 +67,8 @@ body{
   border-radius:18px;
   box-shadow:0 10px 22px rgba(0,0,0,.15);
   opacity:0;
-  transform:translateY(20px);
-  transition:.6s ease;
+  transform:translateY(25px);
+  transition:.7s ease;
 }
 .gallery img.show{
   opacity:1;
@@ -80,7 +86,11 @@ body{
   gap:14px;
   padding:0 18px;
 }
+
+/* ===== BUTTON RIPPLE ===== */
 button{
+  position:relative;
+  overflow:hidden;
   flex:1;
   max-width:160px;
   background:linear-gradient(135deg,var(--blue),var(--blue-dark));
@@ -89,8 +99,24 @@ button{
   border-radius:28px;
   font-size:15px;
   box-shadow:0 10px 25px rgba(0,0,0,.25);
+  cursor:pointer;
 }
-button:hover{transform:translateY(-3px)}
+button::after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:0;
+  background:rgba(255,255,255,.6);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  opacity:0;
+}
+button:active::after{
+  width:300px;
+  height:300px;
+  opacity:0;
+  transition:.6s;
+}
 
 .end{text-align:center}
 </style>
@@ -103,6 +129,8 @@ button:hover{transform:translateY(-3px)}
   <img src="cover.jpg">
   <h1>Recap Học Kỳ I</h1>
   <p>Bảo tàng triển lãm học tập HK1 7A1</p>
+  <img src="intro.jpg" class="intro-img">
+
   <div class="nav">
     <button onclick="go(1)">Bắt đầu</button>
   </div>
@@ -141,6 +169,7 @@ button:hover{transform:translateY(-3px)}
     <button onclick="go(3)">Sau</button>
   </div>
 </div>
+
 <!-- ===== EVENT 3 ===== -->
 <div class="page event">
   <h2>Họp PH lần 1</h2>
@@ -156,11 +185,12 @@ button:hover{transform:translateY(-3px)}
     <img src="IMG_9674.JPG">
   </div>
   <div class="nav">
-    <button onclick="go(1)">Trước</button>
-    <button onclick="go(3)">Sau</button>
+    <button onclick="go(2)">Trước</button>
+    <button onclick="go(4)">Sau</button>
   </div>
 </div>
-  <!-- ===== EVENT 4 ===== -->
+
+<!-- ===== EVENT 4 ===== -->
 <div class="page event">
   <h2>Bước chân tình nguyện</h2>
   <p>Bước chân tình nguyện là nơi chúng tôi có thể chung tay giúp đỡ những hoàn cảnh khó khăn, lan tỏa tinh thần sẻ chia và trách nhiệm với cộng đồng.</p>
@@ -175,11 +205,12 @@ button:hover{transform:translateY(-3px)}
     <img src="IMGP8509.JPG">
   </div>
   <div class="nav">
-    <button onclick="go(1)">Trước</button>
-    <button onclick="go(3)">Sau</button>
+    <button onclick="go(3)">Trước</button>
+    <button onclick="go(5)">Sau</button>
   </div>
 </div>
-    <!-- ===== EVENT 5 ===== -->
+
+<!-- ===== EVENT 5 ===== -->
 <div class="page event">
   <h2>Văn nghệ HK1</h2>
   <p>Văn nghệ là nơi chúng tôi được tỏa sáng với những ý tưởng sáng tạo, tự tin thể hiện tài năng cá nhân và tinh thần tập thể, qua đó khẳng định màu cờ sắc áo của tập thể mình.</p>
@@ -197,11 +228,12 @@ button:hover{transform:translateY(-3px)}
     <img src="Image (16) (1).jpg">
   </div>
   <div class="nav">
-    <button onclick="go(1)">Trước</button>
-    <button onclick="go(3)">Sau</button>
+    <button onclick="go(4)">Trước</button>
+    <button onclick="go(6)">Sau</button>
   </div>
 </div>
-  <!-- ===== EVENT 6 ===== -->
+
+<!-- ===== EVENT 6 ===== -->
 <div class="page event">
   <h2>Công tác xã hội HK1</h2>
   <p>Công tác xã hội là hoạt động giúp chúng tôi có cơ hội tham gia hỗ trợ, sẻ chia và kết nối với mọi người, từ đó nâng cao ý thức trách nhiệm đối với cộng đồng.</p>
@@ -215,10 +247,11 @@ button:hover{transform:translateY(-3px)}
     <img src="z7154638356291_b0d29ebf0a5fe92038d1f3cd9321463d.jpg">
   </div>
   <div class="nav">
-    <button onclick="go(1)">Trước</button>
-    <button onclick="go(3)">Sau</button>
+    <button onclick="go(5)">Trước</button>
+    <button onclick="go(7)">Sau</button>
   </div>
 </div>
+
 <!-- ===== END ===== -->
 <div class="page end">
   <h2>Cảm ơn vì đã xem</h2>
@@ -241,7 +274,7 @@ function go(n){
 }
 
 function observeImages(){
-  const imgs=document.querySelectorAll(".gallery img");
+  const imgs=document.querySelectorAll(".page.active .gallery img");
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting) e.target.classList.add("show");
