@@ -50,3 +50,27 @@
 .gallery img{
   cursor:zoom-in;
 }
+button{
+  position: relative;
+  overflow: hidden; /* bắt buộc để ripple không tràn */
+  -webkit-tap-highlight-color: transparent;
+}
+
+button::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.35) 20%,
+    rgba(255,255,255,0.15) 40%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+button:active::after{
+  opacity: 1;
+}
