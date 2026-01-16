@@ -372,3 +372,23 @@ button{
     <button onclick="go(0)">Xem lại</button>
   </div>
 </div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+
+function go(index){
+  pages.forEach(p => p.classList.remove('active'));
+  pages[index].classList.add('active');
+}
+</script>
+<script>
+const pages = document.querySelectorAll('.page');
+
+function go(index){
+  pages.forEach(p => p.classList.remove('active'));
+  pages[index].classList.add('active');
+}
+</script>
+
+</body>
+</html>
