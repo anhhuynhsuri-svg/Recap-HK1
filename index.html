@@ -389,6 +389,36 @@ function go(index){
 }
 </script>
 
+<script>
+let pages;
 
+window.onload = () => {
+  pages = document.querySelectorAll('.page');
+
+  // hiện ảnh của trang đầu
+  const firstImgs = document.querySelector('.page.active')
+    ?.querySelectorAll('.gallery img') || [];
+
+  firstImgs.forEach((img, i) => {
+    setTimeout(() => img.classList.add('show'), 100 + i * 80);
+  });
+};
+
+function go(index){
+  if(!pages || !pages[index]) return;
+
+  pages.forEach(p => p.classList.remove('active'));
+  pages[index].classList.add('active');
+
+  // hiện ảnh của trang vừa chuyển tới
+  const imgs = pages[index].querySelectorAll('.gallery img');
+  imgs.forEach((img, i) => {
+    img.classList.remove('show');
+    setTimeout(() => img.classList.add('show'), 100 + i * 80);
+  });
+
+  window.scrollTo(0,0);
+}
+</script>
 </body>
 </html>
