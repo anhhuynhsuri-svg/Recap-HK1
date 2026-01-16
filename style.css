@@ -74,3 +74,6 @@ button::after{
 button:active::after{
   opacity: 1;
 }
+.page:not(.active) img {
+  display: none;
+}
