@@ -374,13 +374,21 @@ button{
 </div>
 
 <script>
-const pages = document.querySelectorAll('.page');
+let pages;
+
+window.onload = () => {
+  pages = document.querySelectorAll('.page');
+};
 
 function go(index){
+  if(!pages || !pages[index]) return;
+
   pages.forEach(p => p.classList.remove('active'));
   pages[index].classList.add('active');
+  window.scrollTo(0,0);
 }
 </script>
+
 
 </body>
 </html>
