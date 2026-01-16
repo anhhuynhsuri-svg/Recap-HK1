@@ -411,63 +411,63 @@ Còn block nào nữa thì
   </div>
 </div>
 
+<!-- ===== IMAGE PREVIEW ===== -->
+<div class="img-preview" onclick="closePreview()">
+  <img id="previewImg">
+</div>
+
 <script>
-let pages;
-let preview, previewImg;
+let pages, previewImg;
 
-window.onload = () => {
-  pages = document.querySelectorAll('.page');
+// ===== KHỞI TẠO SAU KHI LOAD =====
+window.addEventListener("load", () => {
+  pages = document.querySelectorAll(".page");
+  previewImg = document.getElementById("previewImg");
 
-  // ===== TẠO KHUNG PREVIEW =====
-  preview = document.querySelector('.img-preview');
-  if(!preview){
-    preview = document.createElement('div');
-    preview.className = 'img-preview';
-    preview.innerHTML = '<img>';
-    document.body.appendChild(preview);
-  }
-  previewImg = preview.querySelector('img');
+  activatePage(document.querySelector(".page.active"));
+});
 
-  // Click nền tối để đóng
-  preview.addEventListener('click', () => {
-    preview.classList.remove('show');
-  });
-
-  // Hiện ảnh + gắn click cho trang đầu
-  activatePage(document.querySelector('.page.active'));
-};
-
-// ===== GẮN CLICK + HIỆN ẢNH =====
+// ===== HIỆU ỨNG ẢNH + PHÓNG TO =====
 function activatePage(page){
   if(!page) return;
 
-  const imgs = page.querySelectorAll('.gallery img');
-  imgs.forEach((img, i) => {
-    // hiệu ứng hiện ảnh
-    img.classList.remove('show');
-    setTimeout(() => img.classList.add('show'), 100 + i * 80);
+  const imgs = page.querySelectorAll(".gallery img");
 
-    // gắn click phóng to (luôn gắn lại)
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  imgs.forEach(img=>{
+    io.observe(img);
+
     img.onclick = () => {
       previewImg.src = img.src;
-      preview.classList.add('show');
+      document.querySelector(".img-preview").classList.add("show");
     };
   });
 }
 
+// ===== ĐÓNG PREVIEW =====
+function closePreview(){
+  document.querySelector(".img-preview").classList.remove("show");
+}
+
 // ===== CHUYỂN TRANG =====
 function go(index){
-  if(!pages || !pages[index]) return;
+  if(!pages[index]) return;
 
-  pages.forEach(p => p.classList.remove('active'));
-  const page = pages[index];
-  page.classList.add('active');
+  pages.forEach(p => p.classList.remove("active"));
+  pages[index].classList.add("active");
 
-  activatePage(page);
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
+  activatePage(pages[index]);
 }
 </script>
-
 
 </body>
 </html>
