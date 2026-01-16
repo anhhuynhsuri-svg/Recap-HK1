@@ -363,7 +363,6 @@ button{
     <button onclick="go(11)">Sau</button>
   </div>
 </div>
-
 <!-- ===== END ===== -->
 <div class="page end">
   <h2>Cảm ơn vì đã xem</h2>
@@ -378,47 +377,37 @@ let pages;
 
 window.onload = () => {
   pages = document.querySelectorAll('.page');
+
+  // Hiện ảnh của trang đầu tiên
+  const firstPage = document.querySelector('.page.active');
+  if(firstPage){
+    const imgs = firstPage.querySelectorAll('.gallery img');
+    imgs.forEach((img, i) => {
+      setTimeout(() => img.classList.add('show'), 100 + i * 80);
+    });
+  }
 };
 
 function go(index){
   if(!pages || !pages[index]) return;
 
+  // Ẩn tất cả page
   pages.forEach(p => p.classList.remove('active'));
-  pages[index].classList.add('active');
-  window.scrollTo(0,0);
-}
-</script>
 
-<script>
-let pages;
-
-window.onload = () => {
-  pages = document.querySelectorAll('.page');
-
-  // hiện ảnh của trang đầu
-  const firstImgs = document.querySelector('.page.active')
-    ?.querySelectorAll('.gallery img') || [];
-
-  firstImgs.forEach((img, i) => {
-    setTimeout(() => img.classList.add('show'), 100 + i * 80);
-  });
-};
-
-function go(index){
-  if(!pages || !pages[index]) return;
-
-  pages.forEach(p => p.classList.remove('active'));
+  // Hiện page được chọn
   pages[index].classList.add('active');
 
-  // hiện ảnh của trang vừa chuyển tới
+  // Hiện ảnh của page đó
   const imgs = pages[index].querySelectorAll('.gallery img');
   imgs.forEach((img, i) => {
     img.classList.remove('show');
     setTimeout(() => img.classList.add('show'), 100 + i * 80);
   });
 
-  window.scrollTo(0,0);
+  // Tự cuộn lên đầu trang
+  window.scrollTo(0, 0);
 }
 </script>
+
 </body>
 </html>
