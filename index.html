@@ -379,16 +379,7 @@ let preview, previewImg;
 window.onload = () => {
   pages = document.querySelectorAll('.page');
 
-  // ===== GIỮ NGUYÊN: hiện ảnh trang đầu =====
-  const firstPage = document.querySelector('.page.active');
-  if(firstPage){
-    const imgs = firstPage.querySelectorAll('.gallery img');
-    imgs.forEach((img, i) => {
-      setTimeout(() => img.classList.add('show'), 100 + i * 80);
-    });
-  }
-
-  // ===== BỔ SUNG: tạo khung phóng to ảnh =====
+  // ===== TẠO KHUNG PREVIEW =====
   preview = document.querySelector('.img-preview');
   if(!preview){
     preview = document.createElement('div');
@@ -398,36 +389,46 @@ window.onload = () => {
   }
   previewImg = preview.querySelector('img');
 
-  // ===== BỔ SUNG: click ảnh để phóng to =====
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      previewImg.src = img.src;
-      preview.classList.add('show');
-    });
-  });
-
-  // ===== BỔ SUNG: click nền tối để đóng =====
+  // Click nền tối để đóng
   preview.addEventListener('click', () => {
     preview.classList.remove('show');
   });
+
+  // Hiện ảnh + gắn click cho trang đầu
+  activatePage(document.querySelector('.page.active'));
 };
 
-// ===== GIỮ NGUYÊN: chuyển trang + hiện ảnh =====
+// ===== GẮN CLICK + HIỆN ẢNH =====
+function activatePage(page){
+  if(!page) return;
+
+  const imgs = page.querySelectorAll('.gallery img');
+  imgs.forEach((img, i) => {
+    // hiệu ứng hiện ảnh
+    img.classList.remove('show');
+    setTimeout(() => img.classList.add('show'), 100 + i * 80);
+
+    // gắn click phóng to (luôn gắn lại)
+    img.onclick = () => {
+      previewImg.src = img.src;
+      preview.classList.add('show');
+    };
+  });
+}
+
+// ===== CHUYỂN TRANG =====
 function go(index){
   if(!pages || !pages[index]) return;
 
   pages.forEach(p => p.classList.remove('active'));
-  pages[index].classList.add('active');
+  const page = pages[index];
+  page.classList.add('active');
 
-  const imgs = pages[index].querySelectorAll('.gallery img');
-  imgs.forEach((img, i) => {
-    img.classList.remove('show');
-    setTimeout(() => img.classList.add('show'), 100 + i * 80);
-  });
-
+  activatePage(page);
   window.scrollTo(0, 0);
 }
 </script>
+
 
 </body>
 </html>
