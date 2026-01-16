@@ -374,11 +374,12 @@ button{
 
 <script>
 let pages;
+let preview, previewImg;
 
 window.onload = () => {
   pages = document.querySelectorAll('.page');
 
-  // Hiện ảnh của trang đầu tiên
+  // ===== GIỮ NGUYÊN: hiện ảnh trang đầu =====
   const firstPage = document.querySelector('.page.active');
   if(firstPage){
     const imgs = firstPage.querySelectorAll('.gallery img');
@@ -386,25 +387,44 @@ window.onload = () => {
       setTimeout(() => img.classList.add('show'), 100 + i * 80);
     });
   }
+
+  // ===== BỔ SUNG: tạo khung phóng to ảnh =====
+  preview = document.querySelector('.img-preview');
+  if(!preview){
+    preview = document.createElement('div');
+    preview.className = 'img-preview';
+    preview.innerHTML = '<img>';
+    document.body.appendChild(preview);
+  }
+  previewImg = preview.querySelector('img');
+
+  // ===== BỔ SUNG: click ảnh để phóng to =====
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      previewImg.src = img.src;
+      preview.classList.add('show');
+    });
+  });
+
+  // ===== BỔ SUNG: click nền tối để đóng =====
+  preview.addEventListener('click', () => {
+    preview.classList.remove('show');
+  });
 };
 
+// ===== GIỮ NGUYÊN: chuyển trang + hiện ảnh =====
 function go(index){
   if(!pages || !pages[index]) return;
 
-  // Ẩn tất cả page
   pages.forEach(p => p.classList.remove('active'));
-
-  // Hiện page được chọn
   pages[index].classList.add('active');
 
-  // Hiện ảnh của page đó
   const imgs = pages[index].querySelectorAll('.gallery img');
   imgs.forEach((img, i) => {
     img.classList.remove('show');
     setTimeout(() => img.classList.add('show'), 100 + i * 80);
   });
 
-  // Tự cuộn lên đầu trang
   window.scrollTo(0, 0);
 }
 </script>
