@@ -321,7 +321,6 @@ button{
   <img src="z7434665521043_af431f834b39565f894d62586d2cb8a3.jpg">
   <img src="z7434665458187_5af4ab4c1a7cd3a81a2db56c9be14d67.jpg">
 </div>
-Còn block nào nữa thì 
 
   <div class="nav">
     <button onclick="go(7)">Trước</button>
@@ -335,18 +334,15 @@ Còn block nào nữa thì
   <p>Học tập trải nghiệm là hoạt động giúp chúng em học hỏi qua thực tế, rèn luyện kỹ năng và mở rộng hiểu biết, từ đó gắn kiến thức với cuộc sống hằng ngày.</p>
 
 <div class="gallery">
-  <img src="">
-  <img src="">
-  <img src="">
-  <img src="">
-  <img src="">
-  <img src="">
-  <img src="z7434665434315_4b7de55d4243770871f710fb15ea1a20.jpg">
-  <img src="z7434665530905_9a467fc6919bad64a251e3807404b755.jpg">
-  <img src="z7434665521043_af431f834b39565f894d62586d2cb8a3.jpg">
-  <img src="z7434665458187_5af4ab4c1a7cd3a81a2db56c9be14d67.jpg">
+  <img src="z7422684077240_44d20b8930058892265fae10e7fa2ec2.jpg">
+  <img src="z7422689486609_e80b221ee9b182de0e29f89b67d7b5dc.jpg">
+  <img src="z7424322670583_19d23ef47de07216187073e0ec41bbef.jpg">
+  <img src="z7424322677401_2ce60ab4005b794fff488697f228d298.jpg">
+  <img src="z7434941640286_8c8dd3b1cbac12a9453a60d692ebe6f8.jpg">
+  <img src="z7434941640286_8c8dd3b1cbac12a9453a60d692ebe6f8.jpg">
+  <img src="z7434941654505_c648328fb4dae8e2da7f4ea23f11ab83.jpg">
+  <img src="z7434941646849_1b17e9429e490a9588374f4b7e792a72.jpg">
 </div>
-Còn block nào nữa thì 
 
   <div class="nav">
     <button onclick="go(8)">Trước</button>
@@ -419,15 +415,15 @@ Còn block nào nữa thì
 <script>
 let pages, previewImg;
 
-// ===== KHỞI TẠO SAU KHI LOAD =====
-window.addEventListener("load", () => {
+/* ===== KHỞI TẠO NGAY KHI HTML XONG (KHÔNG ĐỢI ẢNH) ===== */
+document.addEventListener("DOMContentLoaded", () => {
   pages = document.querySelectorAll(".page");
   previewImg = document.getElementById("previewImg");
 
   activatePage(document.querySelector(".page.active"));
 });
 
-// ===== HIỆU ỨNG ẢNH + PHÓNG TO =====
+/* ===== HIỆU ỨNG ẢNH + PHÓNG TO ===== */
 function activatePage(page){
   if(!page) return;
 
@@ -452,14 +448,14 @@ function activatePage(page){
   });
 }
 
-// ===== ĐÓNG PREVIEW =====
+/* ===== ĐÓNG PREVIEW ===== */
 function closePreview(){
   document.querySelector(".img-preview").classList.remove("show");
 }
 
-// ===== CHUYỂN TRANG =====
+/* ===== CHUYỂN TRANG (BẤM ĐƯỢC NGAY, KHÔNG CHỜ LOAD) ===== */
 function go(index){
-  if(!pages[index]) return;
+  if(!pages || !pages[index]) return;
 
   pages.forEach(p => p.classList.remove("active"));
   pages[index].classList.add("active");
