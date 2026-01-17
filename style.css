@@ -81,3 +81,20 @@ button:active::after{
   content-visibility:auto;
   contain-intrinsic-size:300px 200px;
 }
+/* Mobile – vuốt dọc từng ảnh */
+@media (max-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+  }
+
+  .gallery img {
+    height: 100vh;
+    width: 100%;
+    object-fit: contain; /* hoặc cover nếu bạn muốn đầy khung */
+    scroll-snap-align: start;
+  }
+}
