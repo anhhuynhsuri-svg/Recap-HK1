@@ -98,3 +98,12 @@ button:active::after{
     scroll-snap-align: start;
   }
 }
+/* Cover chỉ hiện nút Bắt đầu */
+.cover .nav {
+  display: block;
+}
+
+/* Các trang event mới có Trước / Sau */
+.event .nav {
+  display: flex;
+}
